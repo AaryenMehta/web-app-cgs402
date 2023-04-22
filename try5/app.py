@@ -14,29 +14,6 @@ def record(out):
         time.sleep(0.05)
         out.write(rec_frame)
 
-# def detect_face(frame):
-#     global net
-#     (h, w) = frame.shape[:2]
-#     blob = cv2.dnn.blobFromImage(cv2.resize(frame, (300, 300)), 1.0,
-#         (300, 300), (104.0, 177.0, 123.0))   
-#     net.setInput(blob)
-#     detections = net.forward()
-#     confidence = detections[0, 0, 0, 2]
-
-#     if confidence < 0.5:            
-#             return frame           
-
-#     box = detections[0, 0, 0, 3:7] * np.array([w, h, w, h])
-#     (startX, startY, endX, endY) = box.astype("int")
-#     try:
-#         frame=frame[startY:endY, startX:endX]
-#         (h, w) = frame.shape[:2]
-#         r = 480 / float(h)
-#         dim = ( int(w * r), 480)
-#         frame=cv2.resize(frame,dim)
-#     except Exception as e:
-#         pass
-#     return frame
 
 def gen_frames():  # generate frame by frame from camera
     global out, capture,rec_frame, username, code
