@@ -125,7 +125,7 @@ def recognize() :
 def recognize2(data) :
     global login
     try :
-        im = cv2.imread("/home/aaryen/Desktop/web-app-cgs402/image.jpeg")
+        im = cv2.imread("/home/aaryen/Desktop/web-app-cgs402/try5/image.jpeg")
         code_ = face_recognition.face_encodings(im)[0]
         ret2 = face_recognition.compare_faces([data], code_, tolerance=0.4)
     except :
@@ -247,7 +247,7 @@ def tasks():
         elif request.form['encoded'] :
             image_data = request.form['encoded']
             imgfile = base64.b64decode(image_data)
-            with open("image.jpeg", "wb") as img:
+            with open("/home/aaryen/Desktop/web-app-cgs402/try5/image.jpeg", "wb") as img:
                 img.write(imgfile)
             x = recognize()
             if x == 1 :
@@ -256,6 +256,7 @@ def tasks():
                 return fail()
             elif x == 2 :
                 return twofa()
+            #request.form.get('face')
         
     elif request.method=='GET' :
         return render_template('index.html')
